@@ -6,10 +6,10 @@ struct STACK
 private:
   int* steck; int n;
 public:
-    STACK(){ //конструктор
+    STACK(){ //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     n=0;
     }
-STACK (const STACK&buildcopy) //конструктор копий
+STACK (const STACK&buildcopy) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёР№
   {
       try {
       steck= new int[buildcopy.n];
@@ -19,13 +19,13 @@ STACK (const STACK&buildcopy) //конструктор копий
       cout<<e.what()<<endl;
       }
   }
-~STACK (){ //удаление
+~STACK (){ 
     if (n>0) delete [] steck;
 }
-STACK operator = (const STACK&analog ){
+STACK operator = (const STACK&analog ){ //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЌРєРІРёРІР°Р»РµРЅС‚РЅРѕСЃС‚Рё
 if (n>0) {
     n=0;
-    delete [] steck; //освободить стек
+    delete [] steck; 
 }
 try {
 steck=new int [analog.n];
@@ -38,7 +38,7 @@ cout<<e.what()<<endl;
 }
 return*this;
 };
-int number(){
+int number(){ 
 return n;}
 void push (int next){
 int*tmp;
@@ -57,7 +57,7 @@ cout<<e.what()<<endl;
 int pop (){
 if (n==0) return 0;
 n--;
-return steck[n]; //возвращает без верхнего элемента
+return steck[n]; //Р±РµР· РІРµСЂС…РЅРµРіРѕ
 }
 int top (){
 if (n==0) return 0;
@@ -69,7 +69,7 @@ return false;
 }
 void print (){
 int*pr;
-pr=steck; //не массив равный стеку, а указатель
+pr=steck; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚РµРє
 cout <<"stack:"<<endl;
 if (n==0) {cout <<"is empty"<<endl;}
 else {
