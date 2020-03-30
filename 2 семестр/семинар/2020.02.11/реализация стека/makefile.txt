@@ -1,0 +1,34 @@
+all: stack
+
+stack: main.o STACK.o top.o push.o print.o pop.o number.o multipop.o isEmpty.o
+	g++ main.o main.o STACK.o top.o push.o print.o pop.o number.o multipop.o isEmpty.o -o stack
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+STACK.o: STACK.cpp
+	g++ -c STACK.cpp
+
+top.o: top.cpp
+	g++ -c top.cpp
+
+push.o: push.cpp
+	g++ -c push.cpp
+
+print.o: print.cpp
+	g++ -c print.cpp
+
+pop.o: pop.cpp
+	g++ -c pop.cpp
+
+number.o: number.cpp
+	g++ -c number.cpp
+
+multipop.o: multipop.cpp
+	g++ -c multipop.cpp
+
+isEmpty.o: isEmpty.cpp
+	g++ -c isEmpty.cpp
+
+clean:
+	rm -rf *.o hello
