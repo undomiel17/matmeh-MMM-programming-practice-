@@ -1,0 +1,15 @@
+all: files
+files: main.o Bio.o put_to_file.o get_from_file.o 
+      g++ main.o Bio.o put_to_file.o get_from_file.o -o files
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+put_to_file.o: put_to_file.cpp
+	g++ -c put_to_file.cpp
+
+get_from_file.o: get_from_file.cpp
+	g++ -c get_from_file.cpp
+
+Bio.o: Bio.cpp
+	g++ -c Bio.cpp
