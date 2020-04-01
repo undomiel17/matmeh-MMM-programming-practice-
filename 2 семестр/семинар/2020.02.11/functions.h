@@ -1,1 +1,0 @@
-void skobki(string a)
