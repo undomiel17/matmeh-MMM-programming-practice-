@@ -16,7 +16,7 @@ char job[20];
 void put_on_file (struct Bio man, const char* path){
     FILE *fp=fopen (path,"wb");
 if (fp==NULL) {
- puts ("не удалось открыть файл");
+ puts ("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј Г®ГІГЄГ°Г»ГІГј ГґГ Г©Г«");
  getchar(); exit (1);
 }
 fwrite (man.name, sizeof(man.name),1,fp);
@@ -43,7 +43,7 @@ fwrite (man.job, sizeof(man.job),1,fp);
 get_from_file (struct Bio man, const char* path){
     FILE *fp=fopen (path,"rb");
 if (fp==NULL) {
- puts ("не удалось открыть файл");
+ puts ("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј Г®ГІГЄГ°Г»ГІГј ГґГ Г©Г«");
  getchar(); exit (1);
 }
 fread (man.name, 1,sizeof(man.name),fp);
@@ -81,7 +81,7 @@ fclose (fp);
 int main()
 {
 setlocale(LC_ALL, "Rus");
-struct Bio man1= { "Андреев Вадим Сергеевич", "20.01.1989", "муж", "Москва", "женат", "СПбГу, хим-фак", "89693475490", "andreeeeev58@gmail.com", "спорт, театр", "сантехник"  };
+struct Bio man1= { "ГЂГ­Г¤Г°ГҐГҐГў Г‚Г Г¤ГЁГ¬ Г‘ГҐГ°ГЈГҐГҐГўГЁГ·", "20.01.1989", "Г¬ГіГ¦", "ГЊГ®Г±ГЄГўГ ", "Г¦ГҐГ­Г ГІ", "Г‘ГЏГЎГѓГі, ГµГЁГ¬-ГґГ ГЄ", "89693475490", "andreeeeev58@gmail.com", "Г±ГЇГ®Г°ГІ, ГІГҐГ ГІГ°", "Г±Г Г­ГІГҐГµГ­ГЁГЄ"  };
 const char* path;
 path="notebook.txt";
 put_on_file (man1, path);
