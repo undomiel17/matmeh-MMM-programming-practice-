@@ -1,5 +1,6 @@
 #include <iostream>
 #include <new>
+#include "functions.h"
 using namespace std;
 int pop (){
 if (n==0) return 0;
