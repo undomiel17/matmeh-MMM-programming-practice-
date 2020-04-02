@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include "functions.h"
 void put_on_file (struct Bio man, const char* path){
     FILE *fp=fopen (path,"wb");
 if (fp==NULL) {
