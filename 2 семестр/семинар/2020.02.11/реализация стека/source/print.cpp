@@ -1,5 +1,3 @@
-#include <iostream>
-#include <new>
 #include "functions.h"
 using namespace std;
 void print (){
