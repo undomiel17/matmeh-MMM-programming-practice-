@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
 #include "functions.h"
 struct Bio {
 char name[40];
