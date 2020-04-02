@@ -1,0 +1,13 @@
+g++ -o MyProg main.cpp skobki.cpp 
+Файлы ./1_test_out.txt и ./1_test_res.txt идентичны
+Файлы ./[2]_test_out.txt и ./2_test_res.txt идентичны
+Файлы ./[3]_test_out.txt и ./3_test_res.txt идентичны
+Файлы ./[4]_test_out.txt и ./4_test_res.txt идентичны
+Файлы ./[5]_test_out.txt и ./5_test_res.txt идентичны
+Файлы ./[6]_test_out.txt и ./6_test_res.txt идентичны
+Файлы ./[7]_test_out.txt и ./7_test_res.txt идентичны
+Файлы ./[8]_test_out.txt и ./8_test_res.txt идентичны
+Файлы ./[9]_test_out.txt и ./9_test_res.txt идентичны
+Файлы ./10_test_out.txt и ./10_test_res.txt идентичны
+количество пройденных тестов
+3
