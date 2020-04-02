@@ -2,6 +2,7 @@
 #include <stack>
 #include <cmath>
 #include <cstring>
+#include "functions.h"
 using namespace std;
 void skobki(string a){
     stack <char> sk;
