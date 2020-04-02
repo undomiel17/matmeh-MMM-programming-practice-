@@ -5,9 +5,9 @@ for k in 1 2 3 4 5 6 7 8 9 10
 do
 if [[ $k -ne 10 ]]
 then
-	pathin=./[$k]_test_in.txt
-	pathout=./[$k]_test_out.txt
-	pathres=./[$k]_test_res.txt
+	pathin=./$k"_test_in.txt"
+	pathout=./$k"_test_out.txt"
+	pathres=./$k"_test_res.txt"
 else
 	pathin=./10_test_in.txt
 	pathout=./10_test_out.txt
