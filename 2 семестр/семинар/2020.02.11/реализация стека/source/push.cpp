@@ -1,5 +1,6 @@
 #include <iostream>
 #include <new>
+#include "functions.h"
 using namespace std;
 void push (int next){
 int*tmp;
