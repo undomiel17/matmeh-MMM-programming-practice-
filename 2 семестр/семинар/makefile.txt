@@ -1,2 +1,0 @@
-all:
-	g++ -o MyProg main.cpp cash.cpp ex1.cpp memory.cpp
