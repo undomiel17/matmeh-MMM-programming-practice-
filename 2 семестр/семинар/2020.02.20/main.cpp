@@ -36,18 +36,18 @@ for (int i=0; i<n; i++)
 {
     setlocale (LC_ALL,"rus");
     int n,m;
-    cout<<"количество элементов:";
+    cout<<"ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў:";
     cin>>n;
-    cout<<"количество повторов:";
+    cout<<"ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ®ГўГІГ®Г°Г®Гў:";
     cin>>m;
-    double t=0; //время на операции
+    double t=0; //ГўГ°ГҐГ¬Гї Г­Г  Г®ГЇГҐГ°Г Г¶ГЁГЁ
 
      //int nomer;
     for (int p=0; p<m; p++){
     int *a=new int[n];
      for (int i=0;i<n; i++) a[i]=i;
     int*b=new int[n];
-    cout<<"введите перестановку:"<<endl;
+    cout<<"ГўГўГҐГ¤ГЁГІГҐ ГЇГҐГ°ГҐГ±ГІГ Г­Г®ГўГЄГі:"<<endl;
     for (int i=0; i<n; i++) cin>>b[i];
     //nomer=1;
     t++;
@@ -58,8 +58,8 @@ for (int i=0; i<n; i++)
             if (poisk(a,b,n)) break;
             //nomer++;
      }
-     //cout<<nomer<<endl; номер текущей перестановки
-     cout<<t<<endl; //текущее время поиска
+     //cout<<nomer<<endl; Г­Г®Г¬ГҐГ° ГІГҐГЄГіГ№ГҐГ© ГЇГҐГ°ГҐГ±ГІГ Г­Г®ГўГЄГЁ
+     cout<<t<<endl; //ГІГҐГЄГіГ№ГҐГҐ ГўГ°ГҐГ¬Гї ГЇГ®ГЁГ±ГЄГ 
 
         delete [] b;
         delete []a;
