@@ -1,4 +1,4 @@
-#include <functions.h>
+#include "functions.h"
 void memory (struct ex1 str){
     unsigned int s= sizeof(str);
     cout<<"структура занимает в памяти: "<<s<<endl;
