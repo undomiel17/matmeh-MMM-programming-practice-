@@ -12,7 +12,7 @@ private:
     float g;
     bool h;
 public:
-    ex(double a, unsigned short int b,  int c, char d, char*e, long int f, float g, bool h ) //конструктор
+    ex(double a, unsigned short int b,  int c, char d, char*e, long int f, float g, bool h ) //ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°
     {
         setEx (a, b, c, d, e, f, g, h);
     }
