@@ -1,4 +1,5 @@
 #include "functions.h"
+using namespace std;
 int main()
 {
     ex Example (1.2, 2,-10, 't', "pmml", 218724, 3456.5, true);
