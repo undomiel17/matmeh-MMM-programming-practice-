@@ -1,2 +1,0 @@
-all:
-	g++ -o MyProg main.cpp operator=.cpp Pop.cpp push.cpp QueueP.cpp
