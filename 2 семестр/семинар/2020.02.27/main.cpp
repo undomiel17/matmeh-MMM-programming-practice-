@@ -7,14 +7,14 @@ template <typename T>
 class QueueP
 {
 private:
-  T* A;               //массив задач
-  int* P;             //их приоритеты
-  int counte;         //количество задач
-  double* time;       //время на их выполнение
-  double* start;      //начало выполнения
-  double*gettime;     //время поступления
-  double currenttime; //текущее время
-  bool*flag;          //запуск
+  T* A;               //Г¬Г Г±Г±ГЁГў Г§Г Г¤Г Г·
+  int* P;             //ГЁГµ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ»
+  int counte;         //ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г§Г Г¤Г Г·
+  double* time;       //ГўГ°ГҐГ¬Гї Г­Г  ГЁГµ ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГҐ
+  double* start;      //Г­Г Г·Г Г«Г® ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГї
+  double*gettime;     //ГўГ°ГҐГ¬Гї ГЇГ®Г±ГІГіГЇГ«ГҐГ­ГЁГї
+  double currenttime; //ГІГҐГЄГіГ№ГҐГҐ ГўГ°ГҐГ¬Гї
+  bool*flag;          //Г§Г ГЇГіГ±ГЄ
 
 public:
   QueueP() { counte = 0; }
@@ -136,15 +136,15 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
   double*gettime2;
   double fractpart, intpart;
   fractpart = modf(get, &intpart);
-  get=intpart*60+fractpart*100; //преобразование в минуты
+  get=intpart*60+fractpart*100; //ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГҐ Гў Г¬ГЁГ­ГіГІГ»
   if (counte==0)
-        currenttime=get;//первая задача запускает время
+        currenttime=get;//ГЇГҐГ°ГўГ Гї Г§Г Г¤Г Г·Г  Г§Г ГЇГіГ±ГЄГ ГҐГІ ГўГ°ГҐГ¬Гї
  for (int i=0;i<counte;i++) if ((start[i]<get)&&(!flag[i])) {
         flag[i]=true;
         break;
  }
- for (int i=1; i<counte; i++) if (!flag[i]) P[i]=P[i]+abs(get-currenttime);//каждую минуту приоритет каждой задачи повышается на 1 за исключением первой
-  currenttime=get;//обновляется время
+ for (int i=1; i<counte; i++) if (!flag[i]) P[i]=P[i]+abs(get-currenttime);//ГЄГ Г¦Г¤ГіГѕ Г¬ГЁГ­ГіГІГі ГЇГ°ГЁГ®Г°ГЁГІГҐГІ ГЄГ Г¦Г¤Г®Г© Г§Г Г¤Г Г·ГЁ ГЇГ®ГўГ»ГёГ ГҐГІГ±Гї Г­Г  1 Г§Г  ГЁГ±ГЄГ«ГѕГ·ГҐГ­ГЁГҐГ¬ ГЇГҐГ°ГўГ®Г©
+  currenttime=get;//Г®ГЎГ­Г®ГўГ«ГїГҐГІГ±Гї ГўГ°ГҐГ¬Гї
   //cout<<gettime<<currenttime; //<<worktime;
 
   try {
@@ -162,7 +162,7 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
   }
   int pos;
   int same=-1;
-  for (int i=0;i<counte; i++)//ищет первую в очереди задачу, поступившую одновременно
+  for (int i=0;i<counte; i++)//ГЁГ№ГҐГІ ГЇГҐГ°ГўГіГѕ Гў Г®Г·ГҐГ°ГҐГ¤ГЁ Г§Г Г¤Г Г·Гі, ГЇГ®Г±ГІГіГЇГЁГўГёГіГѕ Г®Г¤Г­Г®ГўГ°ГҐГ¬ГҐГ­Г­Г®
   if (gettime[i]==get) {
     same=i;
     break;
@@ -171,7 +171,7 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
     pos = 0;
   else
   {
-    if (same!=-1){ //если были параллельные, то сравнивает только их
+    if (same!=-1){ //ГҐГ±Г«ГЁ ГЎГ»Г«ГЁ ГЇГ Г°Г Г«Г«ГҐГ«ГјГ­Г»ГҐ, ГІГ® Г±Г°Г ГўГ­ГЁГўГ ГҐГІ ГІГ®Г«ГјГЄГ® ГЁГµ
         pos=same;
         while (pos < counte)
        {
@@ -181,7 +181,7 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
     }
     if (same==-1){
     pos = 0;
-    while (pos < counte) //ищет место после неначатых с большим приоритетом
+    while (pos < counte) //ГЁГ№ГҐГІ Г¬ГҐГ±ГІГ® ГЇГ®Г±Г«ГҐ Г­ГҐГ­Г Г·Г ГІГ»Гµ Г± ГЎГ®Г«ГјГёГЁГ¬ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ®Г¬
     {
 
       if (flag[pos]==true) pos++;
@@ -209,13 +209,13 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
   gettime2[pos]=get;
   if (counte==0) {start2[pos]=get;
   flag2[pos]=true;
-  } else{ //первая задача запускает время
+  } else{ //ГЇГҐГ°ГўГ Гї Г§Г Г¤Г Г·Г  Г§Г ГЇГіГ±ГЄГ ГҐГІ ГўГ°ГҐГ¬Гї
     if ((start[pos-1]+time[pos-1]) < get) {
-            start2[pos]=get;// если предыдущая закончится раньше, то время сохранится
+            start2[pos]=get;// ГҐГ±Г«ГЁ ГЇГ°ГҐГ¤Г»Г¤ГіГ№Г Гї Г§Г ГЄГ®Г­Г·ГЁГІГ±Гї Г°Г Г­ГјГёГҐ, ГІГ® ГўГ°ГҐГ¬Гї Г±Г®ГµГ°Г Г­ГЁГІГ±Гї
             flag2[pos]=false;}
     else {start2[pos]=start2[pos-1]+time2[pos-1];
     flag2[pos]=false;
-    } //иначе запустится сразу после окончания предыдущей
+    } //ГЁГ­Г Г·ГҐ Г§Г ГЇГіГ±ГІГЁГІГ±Гї Г±Г°Г Г§Гі ГЇГ®Г±Г«ГҐ Г®ГЄГ®Г­Г·Г Г­ГЁГї ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГ©
   }
   for (int i = pos + 1; i < counte + 1; i++)
   {
@@ -224,8 +224,8 @@ void QueueP<T>::Push(T item, int priority, double worktime, double get)
     time2[i]=time[i-1];
     flag2[i]=flag[i];
     gettime2[i]=gettime[i];
-    if ((start2[i-1]+time2[i-1])<start[i-1]) start2[i]=start[i-1]; //если новая прерыдущая заканчивается раньше начала текущей, то начало сохранится
-    else start2[i]=start2[i-1]+time2[i-1]; //иначе начало после конца предыдущей
+    if ((start2[i-1]+time2[i-1])<start[i-1]) start2[i]=start[i-1]; //ГҐГ±Г«ГЁ Г­Г®ГўГ Гї ГЇГ°ГҐГ°Г»Г¤ГіГ№Г Гї Г§Г ГЄГ Г­Г·ГЁГўГ ГҐГІГ±Гї Г°Г Г­ГјГёГҐ Г­Г Г·Г Г«Г  ГІГҐГЄГіГ№ГҐГ©, ГІГ® Г­Г Г·Г Г«Г® Г±Г®ГµГ°Г Г­ГЁГІГ±Гї
+    else start2[i]=start2[i-1]+time2[i-1]; //ГЁГ­Г Г·ГҐ Г­Г Г·Г Г«Г® ГЇГ®Г±Г«ГҐ ГЄГ®Г­Г¶Г  ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГ©
   }
 
   if (counte > 0)
