@@ -1,2 +1,22 @@
-all:
-	g++ -o MyProg main.cpp operator=.cpp Pop.cpp push.cpp QueueP.cpp
+all: MyProg
+
+MyProg: main.o operator=.o Pop.o push.o QuequeP.o
+	g++ main.o factorial.o hello.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+operator=.o: operator=.cpp
+	g++ -c operator=.cpp
+
+Pop.o: Pop.cpp
+	g++ -c Pop.cpp
+
+push.o: push.cpp
+	g++ -c push.cpp
+
+QuequeP.o: QuequeP.cpp
+	g++ -c QuequeP.cpp
+
+clean:
+	rm -rf *.o hello
