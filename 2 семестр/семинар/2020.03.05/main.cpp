@@ -4,27 +4,29 @@
 using namespace std;
 struct node
 {
-    int key_value; //ключ – значение узла, типа int
-    node* left;    //указатель на левого потомка
-    node* right;   //указатель на правого потомка
-    node* parent;   //указатель на родителя
+    int key_value; //ГЄГ«ГѕГ· вЂ“ Г§Г­Г Г·ГҐГ­ГЁГҐ ГіГ§Г«Г , ГІГЁГЇГ  int
+    node* left;    //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  Г«ГҐГўГ®ГЈГ® ГЇГ®ГІГ®Г¬ГЄГ 
+    node* right;   //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЇГ°Г ГўГ®ГЈГ® ГЇГ®ГІГ®Г¬ГЄГ 
+    node* parent;   //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  Г°Г®Г¤ГЁГІГҐГ«Гї
 };
 class btree
 {
 public:
 btree()
 {
- 		      root = NULL;	       // Корневой узел без дочерних элементов
+ 		      root = NULL;	       // ГЉГ®Г°Г­ГҐГўГ®Г© ГіГ§ГҐГ« ГЎГҐГ§ Г¤Г®Г·ГҐГ°Г­ГЁГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 }
 ~btree()
 {
-destroy_tree(root); 	//При удалении дерева, необходимо удалить все //элементы
+destroy_tree(root); 	//ГЏГ°ГЁ ГіГ¤Г Г«ГҐГ­ГЁГЁ Г¤ГҐГ°ГҐГўГ , Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГіГ¤Г Г«ГЁГІГј ГўГ±ГҐ //ГЅГ«ГҐГ¬ГҐГ­ГІГ»
 }
     node*insert(int key)
 {
     return insert(key, root);
 }
-    node* search(int key);
+    node* search(int key);{
+    return search(int key, node* leaf);
+    }
     void destroy_tree();
     void  print(){
      printcurrent(root);
@@ -37,9 +39,9 @@ destroy_tree(root); 	//При удалении дерева, необходимо удалить все //элементы
     int sizetree(node*current);
 
 private:
-void destroy_tree(node* leaf);		//Рекурсивная функция удаления
-node* insert(int key, node* leaf);	//Рекурсивная функция добавления узла в дерево
-node* search(int key, node* leaf);	//Рекурсивная функция поиска узла
+void destroy_tree(node* leaf);		//ГђГҐГЄГіГ°Г±ГЁГўГ­Г Гї ГґГіГ­ГЄГ¶ГЁГї ГіГ¤Г Г«ГҐГ­ГЁГї
+node* insert(int key, node* leaf);	//ГђГҐГЄГіГ°Г±ГЁГўГ­Г Гї ГґГіГ­ГЄГ¶ГЁГї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї ГіГ§Г«Г  Гў Г¤ГҐГ°ГҐГўГ®
+node* search(int key, node* leaf);	//ГђГҐГЄГіГ°Г±ГЁГўГ­Г Гї ГґГіГ­ГЄГ¶ГЁГї ГЇГ®ГЁГ±ГЄГ  ГіГ§Г«Г 
 void printcurrent (node* current);
 //int heightcurrent(node* current);
 int depthcurrent(node* current);
@@ -61,8 +63,8 @@ void btree::destroy_tree(node *leaf)
 {
       if(leaf!=NULL)
       {
-          if (leaf->left != NULL) destroy_tree(leaf->left);	//сначала для левого потомка,
-          if (leaf->right != NULL) destroy_tree(leaf->right);  	//после для правого потомка.
+          if (leaf->left != NULL) destroy_tree(leaf->left);	//Г±Г­Г Г·Г Г«Г  Г¤Г«Гї Г«ГҐГўГ®ГЈГ® ГЇГ®ГІГ®Г¬ГЄГ ,
+          if (leaf->right != NULL) destroy_tree(leaf->right);  	//ГЇГ®Г±Г«ГҐ Г¤Г«Гї ГЇГ°Г ГўГ®ГЈГ® ГЇГ®ГІГ®Г¬ГЄГ .
           delete leaf;
       }
 }
@@ -75,7 +77,7 @@ node* btree::insert(int key, node* leaf)
     }
 else if (key < leaf->key_value)
     {
-        if (leaf->left != NULL)		//И если левый указатель узла инициализирован
+        if (leaf->left != NULL)		//Г€ ГҐГ±Г«ГЁ Г«ГҐГўГ»Г© ГіГЄГ Г§Г ГІГҐГ«Гј ГіГ§Г«Г  ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ Г­
             insert(key, leaf->left);
 else
         {
@@ -101,7 +103,7 @@ node* btree::search(int key, node* leaf)
 if (leaf != NULL)
     {
         if (key == leaf->key_value)
-return leaf;	//Возвращается указатель на найденный элемент.
+return leaf;	//Г‚Г®Г§ГўГ°Г Г№Г ГҐГІГ±Гї ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  Г­Г Г©Г¤ГҐГ­Г­Г»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ.
 if (key < leaf->key_value)
 return search(key, leaf->left);
         else
