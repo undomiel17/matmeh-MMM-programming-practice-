@@ -1,0 +1,40 @@
+all: MyProg
+
+MyProg: main.o btree.o node.o depthcurrent.o destroy_tree.o height.o insert.o newleaf.o printcurrent.o search.o sizetree.o
+	g++ main.o btree.o node.o depthcurrent.o destroy_tree.o height.o insert.o newleaf.o printcurrent.o search.o sizetree.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+btree.o: btree.cpp
+	g++ -c btree.cpp
+
+node.o: node.cpp
+	g++ -c node.cpp
+
+depthcurrent.o: depthcurrent.cpp
+	g++ -c depthcurrent.cpp
+
+destroy_tree.o: destroy_tree.cpp
+	g++ -c destroy_tree.cpp
+
+height.o: height.cpp
+	g++ -c height.cpp
+
+insert.o: insert.cpp
+	g++ -c insert.cpp
+
+newleaf.o: newleaf.cpp
+	g++ -c newleaf.cpp
+
+printcurrent.o: printcurrent.cpp
+	g++ -c printcurrent.cpp
+
+search.o: search.cpp
+	g++ -c search.cpp
+
+sizetree.o: sizetree.cpp
+	g++ -c sizetree.cpp
+
+clean:
+	rm -rf *.o hello
