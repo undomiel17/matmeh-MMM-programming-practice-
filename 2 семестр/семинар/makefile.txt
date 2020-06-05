@@ -1,0 +1,22 @@
+all: MyProg
+
+MyProg: main.o avltree.o experiment.o newtree.o transposition.o
+	g++ main.o avltree.o experiment.o newtree.o transposition.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+avltree.o: avltree.cpp
+	g++ -c avltree.cpp
+
+experiment.o: experiment.cpp
+	g++ -c experiment.cpp
+
+newtree.o: newtree.cpp
+	g++ -c newtree.cpp
+
+transposition.o: transposition.cpp
+	g++ -c transposition.cpp
+
+clean:
+	rm -rf *.o hello
