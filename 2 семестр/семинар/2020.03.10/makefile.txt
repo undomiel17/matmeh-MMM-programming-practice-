@@ -1,0 +1,39 @@
+all: MyProg
+
+MyProg: main.o joker.o mistake.o mixdeck.o points.o print.o replacement.o rightchoice.o step.o takecard.o yourcards.o
+	g++ main.o joker.o mistake.o mixdeck.o points.o print.o replacement.o rightchoice.o step.o takecard.o yourcards.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+joker.o: joker.cpp
+	g++ -c joker.cpp
+
+mistake.o: mistake.cpp
+	g++ -c mistake.cpp
+
+mixdeck.o: mixdeck.cpp
+	g++ -c mixdeck.cpp
+
+points.o: points.cpp
+	g++ -c points.cpp
+
+print.o: print.cpp
+	g++ -c print.cpp
+
+replacement.o: replacement.cpp
+	g++ -c replacement.cpp
+
+rightchoice.o: rightchoice.cpp
+	g++ -c rightchoice.cpp
+
+step.o: step.cpp
+	g++ -c step.cpp
+
+takecard.o: takecard.cpp
+	g++ -c takecard.cpp
+
+yourcards.o: yourcards.cpp
+	g++ -c yourcards.cpp
+
+clean:
