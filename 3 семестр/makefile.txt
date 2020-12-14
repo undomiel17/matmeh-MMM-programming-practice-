@@ -1,0 +1,12 @@
+all: MyProg
+
+MyProg: main.o STACK.o
+	g++ main.o STACK.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+STACK.o: STACK.cpp
+	g++ -c STACK.cpp
+
+clean:
