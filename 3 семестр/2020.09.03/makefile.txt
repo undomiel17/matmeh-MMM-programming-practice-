@@ -1,0 +1,12 @@
+all: MyProg
+
+MyProg: main.o raid.o
+	g++ main.o raid.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+raid.o: raid.cpp
+	g++ -c raid.cpp
+
+clean:
