@@ -1,0 +1,12 @@
+all: MyProg
+
+MyProg: main.o Queue.o
+	g++ main.o Queue.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+Queue.o: Queue.cpp
+	g++ -c Queue.cpp
+
+clean:
