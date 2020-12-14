@@ -1,6 +1,6 @@
-int main()
 #include "functions.h"
 using namespace std;
+int main()
 {
     Queue <int> Q1;
     Queue <int> Q2;
