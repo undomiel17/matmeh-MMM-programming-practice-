@@ -1,0 +1,19 @@
+all: MyProg
+
+MyProg: main.o object1.o object2.o swap.o
+	g++ main.o object1.o object2.o swap.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+object1.o: object1.o.cpp
+	g++ -c object1.o.cpp
+
+object2.o: object2.o.cpp
+	g++ -c object2.o.cpp
+
+swap.o: swap.o.cpp
+	g++ -c swap.o.cpp
+
+clean:
+	rm -rf *.o MyProg
