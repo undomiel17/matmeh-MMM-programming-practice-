@@ -10,3 +10,4 @@ raid.o: raid.cpp
 	g++ -c raid.cpp
 
 clean:
+	rm -rf *.o MyProg
