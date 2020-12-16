@@ -10,3 +10,4 @@ Queue.o: Queue.cpp
 	g++ -c Queue.cpp
 
 clean:
+	rm -rf *.o MyProg
