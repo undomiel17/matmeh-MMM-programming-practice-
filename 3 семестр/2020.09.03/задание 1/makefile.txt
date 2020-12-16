@@ -10,3 +10,4 @@ STACK.o: STACK.cpp
 	g++ -c STACK.cpp
 
 clean:
+	rm -rf *.o MyProg
