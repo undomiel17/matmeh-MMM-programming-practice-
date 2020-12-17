@@ -1,0 +1,32 @@
+all: MyProg
+
+MyProg: main.o input.o output.o buildoutput.o printinput.o printoutput.o write.o read.o
+	g++ main.o input.o output.o buildoutput.o printinput.o printoutput.o write.o read.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+input.o: input.o.cpp
+	g++ -c input.o.cpp
+
+output.o: output.o.cpp
+	g++ -c output.o.cpp
+
+buildoutput.o: buildoutput.o.cpp
+	g++ -c buildoutput.o.cpp
+
+printinput.o: printinput.o.cpp
+	g++ -c printinput.o.cpp
+
+printoutput.o: printoutput.o.cpp
+	g++ -c printoutput.o.cpp
+
+write.o: write.o.cpp
+	g++ -c write.o.cpp
+
+read.o: read.o.cpp
+	g++ -c read.o.cpp
+
+
+clean:
+	rm -rf *.o MyProg
