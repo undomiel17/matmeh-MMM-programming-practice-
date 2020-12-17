@@ -2,7 +2,7 @@
 void read(input*in, const char* path)
 {
     ifstream fin;
-    fin.open(path);
+    fin.open(path, ios::binary);
 
     if (fin)
     {
