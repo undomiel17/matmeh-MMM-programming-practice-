@@ -2,7 +2,7 @@
 void write (output*out, const char* path)
 {
     ofstream fout;
-    fout.open(path);
+    fout.open(path, ios::binary);
     if (fout)
     {
          for (int i = 0; i < dim && !fout.fail(); ++i)
