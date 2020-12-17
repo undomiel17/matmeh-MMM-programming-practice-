@@ -1,3 +1,5 @@
+//Функции записи чтения массива объектов в файл. 
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
