@@ -196,7 +196,7 @@ void printoutput(output*out)
 void write (output*out, const char* path)
 {
     ofstream fout;
-    fout.open(path);
+    fout.open(path, ios::binary);
     if (fout)
     {
          for (int i = 0; i < dim && !fout.fail(); ++i)
@@ -215,7 +215,7 @@ void write (output*out, const char* path)
 void read(input*in, const char* path)
 {
     ifstream fin;
-    fin.open(path);
+    fin.open(path, ios::binary);
 
     if (fin)
     {
