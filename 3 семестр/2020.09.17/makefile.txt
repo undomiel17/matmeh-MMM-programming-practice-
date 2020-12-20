@@ -1,0 +1,32 @@
+all: MyProg
+
+MyProg: main.o QueueP.o Push.o Pop.o Priority.o start.o STARTupgrade.o 
+	g++ main.o QueueP.o Push.o Pop.o Priority.o start.o STARTupgrade.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+QueueP.o: QueueP.o.cpp
+	g++ -c QueueP.o.cpp
+
+Push.o: Push.o.cpp
+	g++ -c Push.o.cpp
+
+Pop.o: Pop.o.cpp
+	g++ -c Pop.o.cpp
+
+Priority.o: Priority.o.cpp
+	g++ -c Priority.o.cpp
+
+printoutput.o: printoutput.o.cpp
+	g++ -c printoutput.o.cpp
+
+start.o: start.o.cpp
+	g++ -c start.o.cpp
+
+STARTupgrade.o: STARTupgrade.o.cpp
+	g++ -c STARTupgrade.o.cpp
+
+
+clean:
+	rm -rf *.o MyProg
