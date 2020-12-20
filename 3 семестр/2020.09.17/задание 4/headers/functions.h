@@ -10,7 +10,7 @@ template <typename T>
      void QueueP<T>::Push(T item, int priority, double worktime, double get);
 template <typename T>
      T QueueP<T>::Pop();
-//считает окончательные приоритеты
+//Г±Г·ГЁГІГ ГҐГІ Г®ГЄГ®Г­Г·Г ГІГҐГ«ГјГ­Г»ГҐ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ»
 template <typename T>
      void QueueP<T>::Priority();
 void start();
