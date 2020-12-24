@@ -1,99 +1,104 @@
-
-//РЎС‚СЂР°С‚РµРіРёСЏ вЂ” СЌС‚Рѕ РїРѕРІРµРґРµРЅС‡РµСЃРєРёР№ РїР°С‚С‚РµСЂРЅ РїСЂРѕРµРєС‚РёСЂРѕРІР°РЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РѕРїСЂРµРґРµР»СЏРµС‚ СЃРµРјРµР№СЃС‚РІРѕ
-//СЃС…РѕР¶РёС… Р°Р»РіРѕСЂРёС‚РјРѕРІ Рё РїРѕРјРµС‰Р°РµС‚ РєР°Р¶РґС‹Р№ РёР· РЅРёС… РІ СЃРѕР±СЃС‚РІРµРЅРЅС‹Р№ РєР»Р°СЃСЃ,
-//РїРѕСЃР»Рµ С‡РµРіРѕ Р°Р»РіРѕСЂРёС‚РјС‹ РјРѕР¶РЅРѕ РІР·Р°РёРјРѕР·Р°РјРµРЅСЏС‚СЊ РїСЂСЏРјРѕ РІРѕ РІСЂРµРјСЏ РёСЃРїРѕР»РЅРµРЅРёСЏ РїСЂРѕРіСЂР°РјРјС‹.
-// РљРѕРЅС‚РµРєСЃС‚ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РІС‹Р·РѕРІР° Р°Р»РіРѕСЂРёС‚РјР°, РѕРїСЂРµРґРµР»С‘РЅРЅРѕРіРѕ РєРѕРЅРєСЂРµС‚РЅРѕР№ РЎС‚СЂР°С‚РµРіРёРµР№, РІС‹Р±РёСЂР°РµРјРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
-
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
 using namespace std;
-class Strategy
-{
-public:
-    virtual ~Strategy() {}
-    virtual float DoWork(const vector<float> &data) const = 0;
+/**
+ * Реализация устанавливает интерфейс для всех классов реализации. Он не должен
+ * соответствовать интерфейсу Абстракции. На практике оба интерфейса могут быть
+ * совершенно разными. Как правило, интерфейс Реализации предоставляет только
+ * примитивные операции, в то время как Абстракция определяет операции более
+ * высокого уровня, основанные на этих примитивах.
+ */
+
+class Implementation {
+ public:
+  virtual ~Implementation() {}
+  virtual string OperationImplementation() const = 0;
 };
 
-class Context
-{
-    //СЂР°Р±РѕС‚Р°РµС‚ СЃРѕ РІСЃРµРјРё СЃС‚СЂР°С‚РµРіРёСЏРјРё
-private:
-    Strategy *strategy_;
-
-public:
-    Context(Strategy *strategy = nullptr) : strategy_(strategy)
-    {
-    }
-    ~Context()
-    {
-        delete this->strategy_;
-    }
-   //Р·Р°РјРµРЅР° СЃС‚СЂР°С‚РµРіРёРё РёР·РЅСѓС‚СЂРё
-    void set_strategy(Strategy *strategy)
-    {
-        delete this->strategy_;
-        this->strategy_ = strategy;
-    }
-
-    void Choose() const
-    {
-        // ...
-        std::cout << "Context: "<<endl;
-        float result = this->strategy_->DoWork(vector<float>{1.0, 2.0, 3.0, 4.0, 5.0});
-        std::cout << result << endl;
-        // ...
-    }
+/**
+ * Каждая Конкретная Реализация соответствует определённой платформе и реализует
+ * интерфейс Реализации с использованием API этой платформы.
+ */
+class ConcreteImplementationA : public Implementation {
+ public:
+  string OperationImplementation() const override {
+    return "Implementation on the First platform.\n";
+  }
+};
+class ConcreteImplementationB : public Implementation {
+ public:
+  string OperationImplementation() const override {
+    return "Implementation on the Second platform.\n";
+  }
 };
 
+/**
+ * Абстракция устанавливает интерфейс для «управляющей» части двух иерархий
+ * классов. Она содержит ссылку на объект из иерархии Реализации и делегирует
+ * ему всю настоящую работу.
+ */
 
-class ConcreteStrategyA : public Strategy
-{
-public:
-    float DoWork(const vector<float> &data) const override
-    {
-        float result;
-        for_each(begin(data), end(data), [&result](const float &number) {
-            result += number;
-        });
-        result/=data.size();
+class Abstraction {
+  /**
+   * @var Implementation
+   */
+ protected:
+  Implementation* implementation_;
 
-        return result;
-    }
+ public:
+  Abstraction(Implementation* implementation) : implementation_(implementation) {
+  }
+
+  virtual ~Abstraction() {
+  }
+
+  virtual string Operation() const {
+    return "Abstraction: Base operation with:\n" +
+           this->implementation_->OperationImplementation();
+  }
 };
-class ConcreteStrategyB : public Strategy
-{
-    float DoWork(const vector<float> &data) const override
-    {
-        float result=1.0;
-        for_each(begin(data), end(data), [&result](const float &number) {
-            result *= number;
-        });
-        result=pow(result,data.size());
-
-        return result;
-    }
+/**
+ * Можно расширить Абстракцию без изменения классов Реализации.
+ */
+class ExtendedAbstraction : public Abstraction {
+ public:
+  ExtendedAbstraction(Implementation* implementation) : Abstraction(implementation) {
+  }
+  string Operation() const override {
+    return "ExtendedAbstraction: Extended operation with:\n" +
+           this->implementation_->OperationImplementation();
+  }
 };
 
- // РљР»РёРµРЅС‚СЃРєРёР№ РєРѕРґ РІС‹Р±РёСЂР°РµС‚ РєРѕРЅРєСЂРµС‚РЅСѓСЋ СЃС‚СЂР°С‚РµРіРёСЋ Рё РїРµСЂРµРґР°С‘С‚ РµС‘ РІ РєРѕРЅС‚РµРєСЃС‚. РљР»РёРµРЅС‚
- //РґРѕР»Р¶РµРЅ Р·РЅР°С‚СЊ Рѕ СЂР°Р·Р»РёС‡РёСЏС… РјРµР¶РґСѓ СЃС‚СЂР°С‚РµРіРёСЏРјРё, С‡С‚РѕР±С‹ СЃРґРµР»Р°С‚СЊ РїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р±РѕСЂ.
-
-
-void ClientCode()
-{
-    Context *context = new Context(new ConcreteStrategyA);
-    std::cout << "Client: Strategy is average"<<endl;
-    context->Choose();
-    std::cout << "\n";
-    std::cout << "Client: Strategy is geometric mean."<<endl;
-    context->set_strategy(new ConcreteStrategyB);
-    context->Choose();
-    delete context;
+/**
+ * За исключением этапа инициализации, когда объект Абстракции связывается с
+ * определённым объектом Реализации, клиентский код должен зависеть только от
+ * класса Абстракции. Таким образом, клиентский код может поддерживать любую
+ * комбинацию абстракции и реализации.
+ */
+void ClientCode(const Abstraction& abstraction) {
+  // ...
+  cout << abstraction.Operation();
+  // ...
 }
+/**
+ * Клиентский код должен работать с любой предварительно сконфигурированной
+ * комбинацией абстракции и реализации.
+ */
 
-int main()
-{
-    ClientCode();
-    return 0;
+int main() {
+  Implementation* implementation = new ConcreteImplementationA;
+  Abstraction* abstraction = new Abstraction(implementation);
+  ClientCode(*abstraction);
+  cout << endl;
+  delete implementation;
+  delete abstraction;
+
+  implementation = new ConcreteImplementationB;
+  abstraction = new ExtendedAbstraction(implementation);
+  ClientCode(*abstraction);
+
+  delete implementation;
+  delete abstraction;
+
+  return 0;
 }
