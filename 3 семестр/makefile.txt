@@ -1,0 +1,16 @@
+all: MyProg
+
+MyProg: main.o form_jacobi_parallel.o object2.o swap.o
+	g++ main.o form_jacobi_parallel.o object2.o swap.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+form_jacobi_parallel.o: form_jacobi_parallel.o.cpp
+	g++ -c form_jacobi_parallel.o.cpp
+
+jacobi_parallel.o: jacobi_parallel.o.cpp
+	g++ -c jacobi_parallel.o.cpp
+
+clean:
+	rm -rf *.o MyProg
