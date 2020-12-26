@@ -44,8 +44,8 @@ main(int argc, char **argv)
   pthread_mutex_init(&pi_lock, NULL);
 
   // Make TWO threads:
-  if (pthread_create(&thread0, NULL, process, "0") ||
-      pthread_create(&thread1, NULL, process, "1")) {
+  if (pthread_create(&thread0, NULL, process, argv[2]) ||
+      pthread_create(&thread1, NULL, process, argv[3])) {
     fprintf(stderr, "%s: cannot make thread\n", argv[0]);
     exit(1);
   }
