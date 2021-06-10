@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 x_min, x_max = 0, 30 # argument range
 
 test_data_size = 700 # amount of data
-iterations = 500 # number of teests
+iterations = 10000 # number of teests
 learn_rate = 0.01 # velocity of lerning
 
 hiddenSize = 8 # size of hidden layer
